@@ -1,4 +1,4 @@
-import { prisma } from "../prisma/index";
+import { prisma } from "../../../prisma/index";
 // id Int @id @default(autoincrement())
 // date DateTime @default(now())
 // location String
@@ -10,23 +10,23 @@ import { prisma } from "../prisma/index";
 // sport String
 
 export const createGame = async (req, res) => {
-    const testGame = {date: new Date(), location: "Central Park", borough: "Manhattan", count: 0, total: 14, pickup: true, price: 0, sport: "Basketball"}
+    console.log('Received POST request at /api/games'); // Log the request
+    console.log('Request body:', req.body); // Log the request body
+
     try {
-        const newGame = await prisma.game.create({data: testGame})
-        res.status(201).json(newGame)
+        const newGame = await prisma.game.create({ data: req.body });
+        res.status(201).json(newGame);
+    } catch (error) {
+        console.error('Error creating game:', error); // Log the error
+        res.status(400).json({ error: error.message });
     }
-    catch (error) {
-        res.status(400).json({error: error.message})
-    }
-}
+};
 
 export const getGames = async (req, res) => {
     try {
         const games = await prisma.game.findMany();
-        res.json(games)
-        console.log(games)
+        res.status(200).json(games);
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
-    catch (error) {
-        res.status(400).json({error: error.message})
-    }
-}
+};

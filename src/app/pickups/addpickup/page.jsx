@@ -1,10 +1,8 @@
 "use client"
 import Link from "next/link";
-import { useEffect } from "react";
 import styles from "../pickups.module.css";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { useState } from "react";
 import LocationInput from "@/app/components/locationInput";
-import Script from "next/script";
 
 const mapsKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
@@ -23,18 +21,21 @@ export default function AddPickupPage() {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    const res = await fetch('/api/games', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-    const newGame = await res.json();
-    setGames([...games, newGame]);
-
-  }
+    try {
+      const response = await fetch('http://localhost:3001/api/games', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include' // Send cookies and other credentials
+      });
+      const data = await response.json();
+      console.log('Data:', data); // Handle response data as needed
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+  
   const handleAddressChange = (coordinates, address) => {
     setFormData({
       ...formData,
@@ -47,10 +48,6 @@ export default function AddPickupPage() {
   }
   return (
     <>
-      <Script
-          src={`https://maps.googleapis.com/maps/api/js?key=${mapsKey}&libraries=places&loading=async`}
-          strategy="beforeInteractive"
-      />
       <div className={styles.rightAlignedRow}>
           <Link href='/pickups/' className={styles.button}>Go back</Link>
       </div>
