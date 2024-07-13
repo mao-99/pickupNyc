@@ -15,6 +15,7 @@ datasource db {
 
 model Games {
   id Int @id @default(autoincrement())
+  game String
   date DateTime @default(now())
   location String
   borough String
@@ -23,4 +24,5 @@ model Games {
   pickup Boolean @default(true)
   price Float @default(0)
   sport String
+  description String
 }

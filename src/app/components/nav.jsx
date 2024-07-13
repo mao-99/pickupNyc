@@ -31,33 +31,14 @@ export default function Nav() {
                         </Link>
                     </li>
                     <li className={styles.navLink}>
-                        <Link href="/about">
-                            About
-                        </Link>
-                    </li>
-                    <li className={styles.navLink}>
                         <Link href="/games">
-                            Find A Game
+                            Games
                         </Link>
                     </li>
+
                     <li className={styles.navLink}>
-                        <Link href="/forum">
-                            Forum
-                        </Link>
-                    </li>
-                    <li className={styles.navLink}>
-                        <Link href="/pickups">
-                            Pickup Games
-                        </Link>
-                    </li>
-                    <li className={styles.navLink}>
-                        <Link href="/profile">
-                            My Profile
-                        </Link>
-                    </li>
-                    <li className={styles.navLink}>
-                        <Link href="/contact">
-                            Contact Us
+                        <Link href="/timeline">
+                            Timeline
                         </Link>
                     </li>
                 </ul>
@@ -66,39 +47,20 @@ export default function Nav() {
                 toggle && (
                     <div className={styles.navbarDropdown}>
                         <ul className={styles.dropdownLinks}>
-                            <li className={styles.dropdownLink}>
+                            <li className={styles.dropdownLinks}>
                                 <Link href="/">
                                     Home
                                 </Link>
                             </li>
-                            <li className={styles.dropdownLink}>
-                                <Link href="/about">
-                                    About
-                                </Link>
-                            </li>
-                            <li className={styles.dropdownLink}>
+                            <li className={styles.dropdownLinks}>
                                 <Link href="/games">
-                                    Find A Game
+                                    Games
                                 </Link>
                             </li>
-                            <li className={styles.dropdownLink}>
-                                <Link href="/forum">
-                                    Forum
-                                </Link>
-                            </li>
-                            <li className={styles.dropdownLink}>
-                                <Link href="/pickups">
-                                    Pickup Games
-                                </Link>
-                            </li>
-                            <li className={styles.dropdownLink}>
-                                <Link href="/profile">
-                                    My Profile
-                                </Link>
-                            </li>
-                            <li className={styles.dropdownLink}>
-                                <Link href="/contact">
-                                    Contact Us
+
+                            <li className={styles.dropdownLinks}>
+                                <Link href="/timeline">
+                                    Timeline
                                 </Link>
                             </li>
                         </ul>

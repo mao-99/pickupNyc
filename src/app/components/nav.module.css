@@ -3,11 +3,12 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    background-color: #0B090A;
+    background-color: transparent;
     min-height: 48px;
     color: #fff;
     margin: 0;
     width: 100%;
+
 }
 .navLinks{
     list-style: none;
@@ -42,6 +43,8 @@
     .nav{
         justify-content: space-between;
         flex-direction: column;
+        z-index: 100;
+        background-color: rgba(38, 49, 70, 0.3);
     }
     .navLinks{
         display: none;
@@ -73,6 +76,7 @@
         justify-content: space-between;
         text-align: center;
         width: 80%;
+        
     }
     .dropdownLinks{
         padding-bottom: 2rem;

@@ -17,11 +17,25 @@
 }
 
 body{
-  background-color: #B1A7A6;
+  /* background-color: #B1A7A6; */
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-image: url('/p5.png');
+  background-position: center;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+.backgroundImage {
+  position: absolute;
+  width: 100vw;
+  height: auto;
+  overflow: hidden;
+  z-index: -1;
+  top: 0;
 }

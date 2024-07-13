@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "pickupnyc",
+			"path": ".."
+		},
+		{
+			"name": "public",
+			"path": "../../pickupny/public"
+		}
+	],
+	"settings": {}
+}

@@ -64,8 +64,9 @@ const LocationInput = ({ className, onAddressChange }) => {
                                         backgroundColor: suggestion.active ? "#41b6e6" : "#fff",
                                         className: className
                                     };
+                                    const {placeId, ...rest} = getSuggestionItemProps(suggestion, { style });
                                     return (
-                                        <div key={suggestion.placeId} {...getSuggestionItemProps(suggestion, { style })}>
+                                        <div key={suggestion.placeId} {...rest}>
                                             {suggestion.description}
                                         </div>
                                     );

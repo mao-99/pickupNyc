@@ -3,6 +3,7 @@ import Link from "next/link";
 import styles from "../pickups.module.css";
 import { useState } from "react";
 import LocationInput from "@/app/components/locationInput";
+import axios from "axios";
 
 const mapsKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
@@ -10,7 +11,7 @@ const mapsKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 export default function AddPickupPage() {
   
   const [games, setGames] = useState([]);
-  const [formData, setFormData] = useState({sport: '', game: '', date: '', location: {lat: null , lng: null , address: ''}, count: 0, time: '', description: ''})
+  const [formData, setFormData] = useState({sport: '', game: '', date: '', location: {lat: null , lng: null , address: ''}, count: 0, time: '', description: '', borough: ''})
   const handleChange = (e) => {
     setFormData({...formData, [e.target.name]: e.target.value})
   }
@@ -23,12 +24,15 @@ export default function AddPickupPage() {
     e.preventDefault();
     try {
       const response = await fetch('http://localhost:3001/api/games', {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
+        body: JSON.stringify(formData),
         credentials: 'include' // Send cookies and other credentials
       });
+      const request = await axios.get('http://localhost:3001/api/games');
+      console.log('Real deal Request:', request);
       const data = await response.json();
       console.log('Data:', data); // Handle response data as needed
     } catch (error) {
@@ -66,12 +70,14 @@ export default function AddPickupPage() {
           <label htmlFor="game">Game</label>
           <input type="text" id="game" name="game" className={styles.formInput} placeholder="Enter Game Name" onChange={handleChange}/>
           <label htmlFor="date">Date</label>
-          <input type="date" id="date" name="date" className={styles.formInput} onChange={handleChange}/>
+          <input type="date" id="date" name="date" className={styles.formInput} onChange={handleChange} defaultValue={Date.now}/>
+          <label htmlFor="borough">Borough</label>
+          <input type="text" id="borough" name="borough" className={styles.formInput} onChange={handleChange} placeholder="Select Borough"/>
           <LocationInput className={styles.formInput} onAddressChange={handleAddressChange}/>
           <label htmlFor="count">Count</label>
           <input type="number" id="count" name="count" min={1} className={styles.formInput} placeholder="0" onChange={handleChange}/>
           <label htmlFor="time" >Time</label>
-          <input type="time" id="time" name="time" className={styles.formInput} onChange={handleChange}/>
+          <input type="time" id="time" name="time" className={styles.formInput} onChange={handleChange} defaultValue={Date.toString().slice(0,5)}/>
           <label htmlFor="description">Add Description</label>
           <input type="textarea" className={styles.formInput} placeholder="Game description" name="description" onChange={handleChange}/>
           <button type="submit" className={styles.buttonPrimary }>Add Pickup</button>

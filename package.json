@@ -5,15 +5,16 @@
   "scripts": {
     "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
     "dev:frontend": "next dev",
-    "dev:backend": "nodemon src/backend/src/server.js",
+    "dev:backend": "nodemon src/backend/src/server.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "api-dev": "nodemon --watch ./src/backend/src/server.js"
+    "api-dev": "nodemon --watch ./src/backend/src/server.mjs"
   },
   "dependencies": {
     "@prisma/client": "^5.16.1",
     "@react-google-maps/api": "^2.19.3",
+    "axios": "^1.7.2",
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "next": "14.2.4",
