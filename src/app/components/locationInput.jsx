@@ -8,14 +8,16 @@ const LocationInput = ({ className, onAddressChange }) => {
     
     const [address, setAddress] = useState("");
     const [coordinates, setCoordinates] = useState(null);
-    const [gmapsLoaded, setGmapsLoaded] = useState(false)
+    const [borough, setBorough] = useState("");
+    const [gmapsLoaded, setGmapsLoaded] = useState(false);
+    
     const mapsKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
 
     // This is how you do componentDidMount() with React hooks
     useEffect(() => {
       window.initMap = () => setGmapsLoaded(true)
       const gmapScriptEl = document.createElement(`script`)
-      gmapScriptEl.src = `https://maps.googleapis.com/maps/api/js?key=${mapsKey}&libraries=places&callback=initMap&loading=async`
+      gmapScriptEl.src = `https://maps.googleapis.com/maps/api/js?key=${mapsKey}&libraries=places&callback=initMap&loading=async`;
       document.querySelector(`body`).insertAdjacentElement(`beforeend`, gmapScriptEl)
     }, [])
 
@@ -37,7 +39,9 @@ const LocationInput = ({ className, onAddressChange }) => {
             const latLng = await getLatLng(results[0]);
             setAddress(value); // Update address to selected value
             setCoordinates(latLng);
-            onAddressChange(latLng, value);
+            console.log(results[0].address_components[2].long_name);
+            onAddressChange(latLng, value, results[0].address_components[2].long_name);
+            console.log(value)
             }
         } catch (error) {
             console.error("Error fetching geocode data: ", error);

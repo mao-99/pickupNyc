@@ -1,0 +1,66 @@
+.button{
+    margin: 1rem;
+    border: 2px solid transparent;
+    background-color: #0B090A;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.rightAlignedRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header{
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 1rem;
+    width: 100%;
+}
+
+.pageDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+}
+
+.formInput{
+    margin: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 2px solid #0B090A;
+    width: 40%;
+    text-align: center;
+}
+
+.locationInput{
+    width: 100%;
+}
+
+.buttonPrimary{
+    background-color: #0B090A;
+    color: #fff;
+    padding: 1rem;
+    margin-top: 1rem;
+    border: 2px solid transparent;
+    border-radius: 0.75rem;
+}
+
+.buttonPrimary:hover{
+    background-color: #660708;
+    border: 2px solid transparent;
+}

@@ -17,6 +17,7 @@ app.use(cors({
 app.get('/api/games', (req,res) => {
     //getGames(req,res);
     console.log('Received GET request at /api/games');
+    getGames(req,res);
 })
 
 app.post('/api/games', (req,res) => {

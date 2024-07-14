@@ -1,3 +1,4 @@
+import axios from "axios";
 import prisma from "../../../prisma/index.mjs";
 // id Int @id @default(autoincrement())
 // date DateTime @default(now())
@@ -11,8 +12,9 @@ import prisma from "../../../prisma/index.mjs";
 
 export const createGame = async (req, res) => {
     console.log(req.body) // Log the request
+    const myObj = {title: req.body.game, date: new Date(req.body.date+'T00:00:00.000Z'), location: req.body.location.address, total: parseInt(req.body.total, 10), count: 0, paid: false, rules: req.body.rules }
     try {
-        const newGame = await prisma.games.create({ data: req.body });
+        const newGame = await prisma.games.create( { data: myObj });
         res.status(201).json(newGame);
     }
     catch (error) {
@@ -37,4 +39,7 @@ export const getGames = async (req, res) => {
     //     res.status(500).json({ error: error.message });
     // }
     console.log("Received GET request at /api/games")
+    const games = await prisma.games.findMany();
+    res.status(200).json(games);
+    console.log(games);
 };
