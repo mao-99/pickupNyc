@@ -39,7 +39,7 @@ const LocationInput = ({ className, onAddressChange }) => {
             const latLng = await getLatLng(results[0]);
             setAddress(value); // Update address to selected value
             setCoordinates(latLng);
-            console.log(results[0].address_components[2].long_name);
+            console.log(results[0].address_components[3].long_name);
             onAddressChange(latLng, value, results[0].address_components[2].long_name);
             console.log(value)
             }

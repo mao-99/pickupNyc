@@ -38,8 +38,7 @@ export const getGames = async (req, res) => {
     // } catch (error) {
     //     res.status(500).json({ error: error.message });
     // }
-    console.log("Received GET request at /api/games")
+    console.log("Getting games");
     const games = await prisma.games.findMany();
     res.status(200).json(games);
-    console.log(games);
 };

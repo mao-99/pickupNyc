@@ -1,5 +1,6 @@
 // server.js or index.js
 import { createGame, getGames } from '../controllers/gameController.mjs';
+import prisma from '../../../prisma/index.mjs';
 import express from 'express';
 import cors from 'cors';
 
@@ -28,4 +29,9 @@ app.post('/api/games', (req,res) => {
 
 app.listen(3001, () => {
     console.log('Server running on port 3001');
+    async function callback() {
+        const response = await prisma.games.findMany();
+        console.log(response);
+    }
+    callback();
 })
