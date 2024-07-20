@@ -1,5 +1,5 @@
 import Banner from "./components/banner";
-import CallBack from "./components/rootComponentHelper";
+import DatabaseGames from "./components/databaseGames";
 
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <>
-      <CallBack />
+      <DatabaseGames />
       <Banner />
     </>
   );
